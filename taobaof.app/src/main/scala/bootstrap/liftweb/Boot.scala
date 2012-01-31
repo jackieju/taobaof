@@ -8,7 +8,7 @@ import Helpers._
 import net.liftweb.mapper.{DB, ConnectionManager, Schemifier, DefaultConnectionIdentifier, ConnectionIdentifier}
 import java.sql.{Connection, DriverManager}
 import taobaof.group.model._
- 
+
 /**
   * A class that's instantiated early and run.  It allows the application
   * to modify lift's environment
@@ -17,7 +17,7 @@ class Boot {
   def boot {
     if (!DB.jndiJdbcConnAvailable_?) DB.defineConnectionManager(DefaultConnectionIdentifier, DBVendor)
     // where to search snippet
-    LiftRules.addToPackages("taobaof.group")     
+    LiftRules.addToPackages("taobaof.group")
     Schemifier.schemify(true, Log.infoF _, User)
 
     LiftRules.addTemplateBefore(User.templates)
